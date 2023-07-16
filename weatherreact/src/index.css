@@ -1,0 +1,29 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+
+html {  
+    scroll-behavior: smooth !important;
+
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 5px;
+  }
+
+*::-webkit-scrollbar-track {
+background: var(--primary);
+
+}
+*::-webkit-scrollbar-thumb {
+background-color: var(--secondary);
+
+border: 0px solid var(--primary);
+}
+
+
+
