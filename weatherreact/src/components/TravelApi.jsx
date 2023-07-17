@@ -39,7 +39,7 @@ const FetchTravelApi = ({ latitude, longitude }) => {
     }
   };
 
-  const itemsWithPhotos = data.filter((item) => item.photo && item.num_reviews > 20);
+  const itemsWithPhotos = data.filter((item) => item.photo && item.num_reviews > 50);
   return (
 <>
 

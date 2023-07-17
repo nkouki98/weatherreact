@@ -2,9 +2,6 @@
   min-width: screen;
   margin: 0 auto;
   text-align: center;
-
-  --primary: rgb(72, 69, 69);
-  --secondary: rgb(131, 131, 131);
 }
 
 .logo {

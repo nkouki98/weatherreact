@@ -9,21 +9,30 @@ html {
     scroll-behavior: smooth !important;
 
 }
+:root {
+  --primary: rgb(254, 254, 254);
+  --secondary: rgb(87, 87, 87);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 5px;
-  }
+  width: 6px;
+}
 
 *::-webkit-scrollbar-track {
-background: var(--primary);
-
+  background: var(--primary);
+  border-radius: 1px;
 }
+
 *::-webkit-scrollbar-thumb {
-background-color: var(--secondary);
-
-border: 0px solid var(--primary);
+  background-color: var(--secondary);
+  border-radius: 2px;
+  border: 2px solid var(--primary);
 }
-
-
 
