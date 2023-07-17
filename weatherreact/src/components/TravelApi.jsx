@@ -48,25 +48,38 @@ const FetchTravelApi = ({ latitude, longitude }) => {
   return (
 <>
 
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : itemsWithPhotos.length > 0 ? (
-        // Render your data here
-        itemsWithPhotos.map((item) => (
-          <div key={item.location_id} className="bg-zinc-700 rounded-sm shadow-3xl font-sans hover:scale-105">
-            {/* Card content */}
-            <img src={item.photo.images.medium.url} alt={item.name} className=" mb-3 w-full object-cover rounded-sm" />
-            <h2 className="text-base font-sans font-semibold mb-1 mx-2 text-zinc-50">{item.name}</h2>
-            <div className="text-white p-1 mx-3 font-sans">{item.address}</div>
-            <button type="button"  onClick={() => handleReviewsButtonClick(item.web_url)} className=" text-yellow-400 p-2 text-sm font-sans border border-yellow-200 hover:scale-105 mb-5 my-2 shadow-md rounded-md">{item.num_reviews} reviews</button>
-            {/* Add other properties here */}
+<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  {isLoading ? (
+    <p>Loading...</p>
+  ) : itemsWithPhotos.length > 0 ? (
+    // Render your data here
+    itemsWithPhotos.map((item) => (
+      <div key={item.location_id} className="bg-gray-800 shadow-3xl font-sans rounded-lg hover:scale-105">
+        {/* Card content */}
+        <div className="relative h-72 w-full overflow-hidden rounded-t-lg">
+          <img src={item.photo.images.medium.url} alt={item.name} className="h-full w-full object-cover" />
+          <div className="absolute bottom-2 left-2">
+            <button
+              onClick={() => handleReviewsButtonClick(item.web_url)}
+              className="flex items-center p-2 text-sm font-poppins tracking-tight hover:scale-105 text-white bg-slate-500 rounded-md"
+            >
+              {item.num_reviews} reviews<svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+            </button>
           </div>
-        ))
-      ) : (
-        <p className='text-center font-mono text-lg'>No data found for the location!</p>
-      )}
-    </div>
+        </div>
+        <h2 className="text-lg mx-3 font-bold tracking-tight mb-1 p-1 text-zinc-50">{item.name}</h2>
+        <div className="text-gray-400 p-2 mx-3 mb-2 font-sans text-base">{item.address}</div>
+        {/* Add other properties here */}
+      </div>
+    ))
+  ) : (
+    <p className="text-center font-mono text-lg">No data found for the location!</p>
+  )}
+</div>;
+
+
     </>
   );
 };
