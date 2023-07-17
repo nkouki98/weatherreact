@@ -172,8 +172,7 @@ function App() {
             <div className='text-base font-thin font-mono -tracking-tight text-white mt-10 p-10'>
         <h1>Type in your city to get weather and more!</h1>
         
-        <h1>OR</h1>
-        <button className=' bg-zinc-700 border font-sans -tracking-tighter border-white hover:bg-zinc-500 my-5 p-3 shadow-xl rounded-lg'> Get My Location</button>
+        
         </div>
 
 
