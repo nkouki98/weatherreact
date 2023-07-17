@@ -126,46 +126,46 @@ return (
 
 
 <div className="relative min-h-screen shadow-2xl rounded-3xl">
-{/* Full-screen background */}
+        {/* Full-screen background */}
 
-<div className="absolute inset-2 bg-cover bg-center bg-no-repeat bg-blend-overlay bg-black/50 shadow-xl rounded-lg" 
-style={{
-position:'fixed',
-transition: "background-image 1.2s ease-in",
-backgroundImage:
-typeof weather.main !== "undefined" && imageReady
-? `url(${imageUrl})`
-: "url(/clear3.jpg)",
+        <div className="absolute inset-2 bg-cover bg-center bg-no-repeat bg-blend-overlay bg-black/50 shadow-xl rounded-lg" 
+        style={{
+        position:'fixed',
+        transition: "background-image 1.2s ease-in",
+        backgroundImage:
+        typeof weather.main !== "undefined" && imageReady
+        ? `url(${imageUrl})`
+        : "url(/clear3.jpg)",
 
-}}>
-
-
-
-<div className="flex flex-col items-center justify-start min-h-screen">
-<div className="flex items-center justify-center mt-10">
-<input
-className="text-white bg-black/10 rounded-lg h-4 p-5 min-w-min text-lg shadow-lg font-sans font-normal font-white tracking-tight focus:outline-none"
-type="search"
-name="search"
-placeholder="Search Weather here . . . ."
-onChange={handleCityChange}
-value={city}
-onKeyDown={handleKeyDown}
-/>
-
-</div>
-{(typeof weather.main === "undefined") && (  
-<div className='text-base font-thin font-mono -tracking-tight text-white mt-10 p-10'>
-<h1>Type in your city to get weather and more!</h1>
-
-
-</div>
+        }}>
 
 
 
+        <div className="flex flex-col items-center justify-start min-h-screen">
+        <div className="flex items-center justify-center mt-10">
+        <input
+        className="text-white bg-black/10 rounded-lg h-4 p-5 min-w-min text-lg shadow-lg font-sans font-normal font-white tracking-tight focus:outline-none"
+        type="search"
+        name="search"
+        placeholder="Search Weather here . . . ."
+        onChange={handleCityChange}
+        value={city}
+        onKeyDown={handleKeyDown}
+        />
 
-)}
-{(typeof weather.main !== "undefined") && (  
+        </div>
+        {(typeof weather.main === "undefined") && (  
+        <div className='text-base font-thin font-mono -tracking-tight text-white mt-10 p-10'>
+        <h1>Type in your city to get weather and more!</h1>
+
+
+        </div>
+
+
+
+
+          )}
+      {(typeof weather.main !== "undefined") && (  
 <>
 <div className="text-center">
 <div className="flex justify-center text-white p-1 text-9xl mt-10 ">
@@ -218,7 +218,8 @@ onKeyDown={handleKeyDown}
 <div className="bg-zinc-900 md:p-5 md:text-base sm:text-sm p-5 shadow-3xl rounded-xl mb-5 mt-5 text-white font-mono text-ellipsis border border-zinc-50/20 hover:scale-105">
 <div className="text-3xl md:text-lg sm:text-base text-white font-mono font-thin tracking-wider my-1">{weather.name},{weather.sys.country}</div>
 
-<div className=" text-yellow-400">{weather.weather[0].description}, feels like {weather.main.feels_like}°C</div>
+<div className=" text-yellow-400">{weather.weather[0].description.charAt(0).toUpperCase() +
+    weather.weather[0].description.slice(1)}, feels like {weather.main.feels_like}°C</div>
 
 <div className="justify-center text-base relative my-2 font-mono text-white font-thin py-2 mt-1 md:flex">
 {weather.main.humidity < 80 && (
