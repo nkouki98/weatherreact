@@ -29,65 +29,63 @@ function App() {
     setCity(event.target.value);
   };
 
-  async function getUnsplashPhoto() {
-    try {
-      const apiKey = import.meta.env.VITE_UNSPLASH;
-      const response = await axios.get(
-        `https://api.unsplash.com/search/photos?client_id=${apiKey}&query=${city}&per_page=1`
-      );
-      const photo = response.data.results[0]; // Get the first photo from the results
+const getUnsplashPhoto = async () => {
+  try {
+    const apiKey = import.meta.env.VITE_UNSPLASH;
+    const response = await fetch(
+      `https://api.unsplash.com/search/photos?client_id=${apiKey}&query=${city}&per_page=1`
+    );
+    const data = await response.json();
+    const photo = data.results[0]; // Get the first photo from the results
 
     if (photo) {
       const preloadImage = new Image();
       preloadImage.onload = () => {
         setImageUrl(preloadImage.src); // Set the image URL once it's fully loaded
         setImageReady(true); // Set imageReady to true when the image is loaded
-
-      console.log("HERE");
-    };
+      };
 
       preloadImage.onerror = () => {
-      setImageUrl('/clear3.jpg'); // Set the fallback image in case the Unsplash image fails to load
-      setImageReady(true); // Set imageReady to true even if the image fails to load (optional)
-
-      console.log("Error loading image");
-    };
+        setImageUrl('/clear3.jpg'); // Set the fallback image in case the Unsplash image fails to load
+        setImageReady(true); // Set imageReady to true even if the image fails to load (optional)
+        console.log("Error loading image");
+      };
 
       preloadImage.src = photo.urls.full; // Start preloading the image
     } else {
       setImageUrl(''); // Reset imageUrl if no photo is found
-      setLoading(false);
+     
     }
-      } catch (error) {
-      console.error(error);
-      }
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 
 
 
 const getCoordinatesFromCity = async (city) => {
-const params = {
-access_key: import.meta.env.VITE_POSITIONSTACK,
-query: city,
-};
-try {
-const response = await axios.get('http://api.positionstack.com/v1/forward', { params });
-const { data } = response;
-if (data.data && data.data.length > 0) {
-const { latitude, longitude } = data.data[0];
-setLongitude(longitude);
-setLatitude(latitude)
-console.log('Latitude:', latitude);
-console.log('Longitude:', longitude);
-} else {
-console.log('Location not found.');
-}
-} catch (error) {
-console.error('Error fetching location data:', error);
-}
+  const apiKey = import.meta.env.VITE_OPENCAGE;
+  const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city)}&key=${apiKey}`;
 
-}
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.results && data.results.length > 0) {
+      const { lat, lng } = data.results[0].geometry;
+      setLongitude(lng);
+      setLatitude(lat);
+      console.log('Latitude:', lat);
+      console.log('Longitude:', lng);
+    } else {
+      console.log('Location not found.');
+    }
+  } catch (error) {
+    console.error('Error fetching location data:', error);
+  }
+};
+  
 const getWeather = async event => {
 if(event.key === "Enter") {
 try{
