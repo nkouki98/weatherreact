@@ -16,7 +16,7 @@ const FetchTravelApi = ({ latitude, longitude }) => {
       const params = new URLSearchParams({
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-        limit: '30',
+        limit: '5',
         currency: 'USD',
         distance: '2',
         open_now: 'false',
@@ -56,9 +56,9 @@ const FetchTravelApi = ({ latitude, longitude }) => {
       ) : itemsWithPhotos.length > 0 ? (
         // Render your data here
         itemsWithPhotos.map((item) => (
-          <div key={item.location_id} className="bg-zinc-700 rounded-lg shadow-3xl font-sans hover:scale-105">
+          <div key={item.location_id} className="bg-zinc-700 rounded-sm shadow-3xl font-sans hover:scale-105">
             {/* Card content */}
-            <img src={item.photo.images.medium.url} alt={item.name} className=" mb-2 w-full object-fill rounded-t-lg" />
+            <img src={item.photo.images.medium.url} alt={item.name} className=" mb-3 w-full object-cover rounded-sm" />
             <h2 className="text-base font-sans font-semibold mb-1 mx-2 text-zinc-50">{item.name}</h2>
             <div className="text-white p-1 mx-3 font-sans">{item.address}</div>
             <button type="button"  onClick={() => handleReviewsButtonClick(item.web_url)} className=" text-yellow-400 p-2 text-sm font-sans border border-yellow-200 hover:scale-105 mb-5 my-2 shadow-md rounded-md">{item.num_reviews} reviews</button>
