@@ -17,9 +17,7 @@ const FetchTravelApi = ({ latitude, longitude }) => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
         limit: '5',
-        currency: 'USD',
-        distance: '2',
-        open_now: 'false',
+        distance: '5',
         lunit: 'km',
         lang: 'en_US',
       });
