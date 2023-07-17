@@ -149,7 +149,7 @@ function App() {
           backgroundImage:
             typeof weather.main !== "undefined" && !loading
               ? `url(${imageUrl})`
-              : "url(./public/clear3.jpg)",
+              : "url(/clear3.jpg)",
           
         }}>
   
