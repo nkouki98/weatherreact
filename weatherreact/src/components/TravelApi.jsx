@@ -13,31 +13,34 @@ const FetchTravelApi = ({ latitude, longitude }) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng', {
-        params: {
-          latitude: latitude.toString(),
-          longitude: longitude.toString(),
-          limit: '30',
-          currency: 'USD',
-          distance: '2',
-          open_now: 'false',
-          lunit: 'km',
-          lang: 'en_US',
-        },
+      const params = new URLSearchParams({
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+        limit: '30',
+        currency: 'USD',
+        distance: '2',
+        open_now: 'false',
+        lunit: 'km',
+        lang: 'en_US',
+      });
+  
+      const response = await fetch(`https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng?${params}`, {
         headers: {
           'X-RapidAPI-Key': import.meta.env.VITE_TRAVELADVISOR,
           'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
         },
       });
-
-      setData(response.data.data || []);
+  
+      const data = await response.json();
+      setData(data.data || []);
       setIsLoading(false);
-      console.log(response.data);
+      console.log(data);
     } catch (error) {
       console.error('Error fetching data:', error);
       setIsLoading(false);
     }
   };
+  
 
   const itemsWithPhotos = data.filter((item) => item.photo && item.num_reviews > 5);
 
