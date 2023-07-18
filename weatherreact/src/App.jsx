@@ -244,7 +244,7 @@ return (
 </div>
 {/* Bullet scroll to next page */}
 <div className="flex items-center justify-center fixed bottom-0 w-full py-4 mb-5">
-<a href="#next-page" className="text-white animate-bounce">
+<a href="#city-details" className="text-white animate-bounce">
 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
 </svg>
@@ -265,7 +265,7 @@ return (
 {(typeof weather.main !== "undefined") && (  
 <div className="relative min-h-screen bg-white">
 
-<div id="next-page" className="flex flex-col justify-start min-h-screen">
+<div id="city-details" className="flex flex-col justify-start min-h-screen">
 <div className='items-start text-start text-7xl font-sans font-thin ml-10 py-5 my-10'>
 {weather.name}, see trending &nbsp;
 <div>
