@@ -16,7 +16,7 @@ const FetchTravelApi = ({ latitude, longitude }) => {
       const params = new URLSearchParams({
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-        limit: '5',
+        limit: '30',
         distance: '5',
         lunit: 'km',
         lang: 'en_US',
