@@ -40,7 +40,7 @@ const FetchTravelApi = ({ latitude, longitude }) => {
   };
   
 
-  const itemsWithPhotos = data.filter((item) => item.photo && item.num_reviews > 5);
+  const itemsWithPhotos = data.filter((item) => item.photo && item.num_reviews > 20);
 
   const handleReviewsButtonClick = (link) => {
     window.open(link, '_blank'); // Open the link in a new tab
