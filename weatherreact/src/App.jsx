@@ -145,6 +145,7 @@ return (
         <div className="flex items-center justify-center mt-10">
         <input
         className="text-white bg-black/10 rounded-lg h-4 p-5 min-w-min text-lg shadow-lg font-sans font-normal font-white tracking-tight focus:outline-none"
+        autoFocus
         type="search"
         name="search"
         placeholder="Search Weather here . . . ."
