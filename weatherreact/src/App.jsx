@@ -96,8 +96,7 @@ function App() {
         setCity('');
         setTimeout(() => {
           setWeather(result); // Update weather state after 1500 milliseconds (1.5 seconds)
-          setIsLoading(false);
-        }, 800);
+        }, 600);
         });
         } catch (error) {
         console.error(error);
@@ -108,6 +107,7 @@ function App() {
  
   const handleKeyDown = async (event) => {
     if (event.key === 'Enter') {
+      setIsLoading(true);
       try {
         await getUnsplashPhoto(city);
         await getWeather(event);
@@ -116,7 +116,9 @@ function App() {
     } catch (error) {
         console.error(error);
       }
+      setIsLoading(false);
     }
+
   };
 
  
@@ -141,7 +143,7 @@ function App() {
     
   }
   const handleImageClick = async (cityName) => {
-  
+      setIsLoading(true);
       try {
         await getUnsplashPhoto(cityName);
         await getWeatherOnClick(cityName)
@@ -150,7 +152,7 @@ function App() {
     } catch (error) {
         console.error(error);
       }
-    
+    setIsLoading(false);
   };
 
   const handlenav = () => {
