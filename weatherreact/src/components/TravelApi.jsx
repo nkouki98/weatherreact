@@ -85,7 +85,7 @@ const FetchTravelApi = ({ latitude, longitude }) => {
   ) : (
     <p className="text-center font-mono text-lg">No data found for the location!</p>
   )}
-</div>;
+</div>
 
 
     </>
