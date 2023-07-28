@@ -93,7 +93,7 @@ function App() {
         .then(result => {
         setCity('');
         setTimeout(() => {
-          setWeather(result); // Update weather state after 1500 milliseconds (1.5 seconds)
+          setWeather(result); 
         }, 700);
         });
         } catch (error) {
@@ -130,7 +130,7 @@ function App() {
         .then(result => {
         setCity('');
         setTimeout(() => {
-        setWeather(result); // Update weather state after 1500 milliseconds (1.5 seconds)
+        setWeather(result); 
         }, 700);
         });
         } catch (error) {
@@ -151,7 +151,7 @@ function App() {
       }
      
  
-          setIsLoading(false); // Update weather state after 1500 milliseconds (1.5 seconds)
+          setIsLoading(false); 
      
         
       
