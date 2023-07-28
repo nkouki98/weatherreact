@@ -21,7 +21,7 @@ function App() {
   const [longitude, setLongitude] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  
  
   const handleCityChange = (event) => {
     setCity(event.target.value);
@@ -68,7 +68,6 @@ function App() {
   const getCoordinatesFromCity = async (cityparam) => {
     const apiKey = import.meta.env.VITE_OPENCAGE;
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(cityparam)}&key=${apiKey}`;
-
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -88,7 +87,6 @@ function App() {
   
   const getWeather = async event => {
     if(event.key === "Enter") {
-      setIsLoading(true);
       try{
         fetch(`${api.base}weather?q=${city}&units=metric&appid=${api.key}`)
         .then(res => res.json())
@@ -96,9 +94,11 @@ function App() {
         setCity('');
         setTimeout(() => {
           setWeather(result); // Update weather state after 1500 milliseconds (1.5 seconds)
-        }, 600);
+        }, 700);
         });
         } catch (error) {
+        setError(error);
+
         console.error(error);
         }
 
@@ -116,16 +116,14 @@ function App() {
     } catch (error) {
         console.error(error);
       }
-      setIsLoading(false);
+      setIsLoading(false); 
     }
 
   };
 
  
   const getWeatherOnClick = async (param) => {
-    
-      // console.log(param);
-      setIsLoading(true);
+
       try{
         fetch(`${api.base}weather?q=${param}&units=metric&appid=${api.key}`)
         .then(res => res.json())
@@ -133,7 +131,6 @@ function App() {
         setCity('');
         setTimeout(() => {
         setWeather(result); // Update weather state after 1500 milliseconds (1.5 seconds)
-        setIsLoading(false);
         }, 700);
         });
         } catch (error) {
@@ -152,7 +149,13 @@ function App() {
     } catch (error) {
         console.error(error);
       }
-    setIsLoading(false);
+     
+ 
+          setIsLoading(false); // Update weather state after 1500 milliseconds (1.5 seconds)
+     
+        
+      
+    
   };
 
   const handlenav = () => {
@@ -316,7 +319,7 @@ return (
                       <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
                   </svg>
                 <span className="sr-only">Loading...</span>
-                </div>}
+                </div>}                
                 
                   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-3 my-16">
                     <div className='bg-black relative drop-shadow-lg'>
