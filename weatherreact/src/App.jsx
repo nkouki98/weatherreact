@@ -146,16 +146,10 @@ function App() {
         await getWeatherOnClick(cityName)
         await getCoordinatesFromCity(cityName);
       
-    } catch (error) {
+      } catch (error) {
         console.error(error);
       }
-     
- 
-          setIsLoading(false); 
-     
-        
-      
-    
+    setIsLoading(false); 
   };
 
   const handlenav = () => {
@@ -170,24 +164,24 @@ return (
 
         {/* Full-screen background */}
 
-      {typeof weather.main !== "undefined"  && imageReady ?(
+      {typeof weather.main !== "undefined"   && imageReady  ?(
         
         <>
         <div className="relative min-h-screen shadow-2xl rounded-xl overflow-y-auto">
           <div className="absolute inset-2 bg-cover bg-center bg-no-repeat bg-blend-overlay bg-black/50 shadow-xl rounded-lg"     
                   style={{
                   position:'fixed',
-                  transition: "background-image 1.5s ease-in-out",
+                  transition: "background-image 1.2s ease-in",
                   backgroundImage:`url(${imageUrl})`
               }}>
-                <a href='#main-page'  onClick={handlenav}><BootStrap.BsArrowLeftSquareFill className='text-white text-2xl mx-3 my-3'></BootStrap.BsArrowLeftSquareFill></a>
+                <a href='#main-page' onClick={handlenav}><BootStrap.BsArrowLeftSquareFill className='text-white text-2xl mx-3 my-3'></BootStrap.BsArrowLeftSquareFill></a>
             <div className="flex flex-col items-center justify-start min-h-screen">
               <div className="flex items-center justify-center mt-5 relative">
               <input
                   className="text-white bg-transparent h-4 p-3 min-w-min text-lg font-sans font-normal font-white tracking-tight focus:outline-none"
                   type="search"
                   name="search"
-                  placeholder="Search Weather here . . . ."
+                  placeholder="Enter your city . . . ."
                   onChange={handleCityChange}
                   value={city}
                   onKeyDown={handleKeyDown}
@@ -248,7 +242,7 @@ return (
 
             </div>
           <div className="text-center xl:w-1/4 md:w-2/3 text-ellipsis">  
-            <div className="bg-zinc-900 md:p-5 p-5 shadow-3xl rounded-xl mb-5 mt-5 text-white font-mono text-ellipsis border border-zinc-50/20 ">
+            <div className="bg-black/60 md:p-5 p-2 shadow-3xl mb-5 mt-5 text-white font-mono text-ellipsis  ">
               <div className="lg:text-xl md:text-base sm:text-sm text-white font-mono font-thin tracking-wider my-1">{weather.name},{weather.sys.country}</div>
 
                 <div className=" text-yellow-400">{weather.weather[0].description.charAt(0).toUpperCase() +
@@ -307,7 +301,7 @@ return (
                 autoFocus
                 type="search"
                 name="search"
-                placeholder="Search Weather here . . . ."
+                placeholder="Enter your city . . . ."
                 onChange={handleCityChange}
                 value={city}
                 onKeyDown={handleKeyDown}
@@ -321,40 +315,40 @@ return (
                 <span className="sr-only">Loading...</span>
                 </div>}                
                 
-                  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-3 my-16">
-                    <div className='bg-black relative drop-shadow-lg'>
-                 
-                       <figure onClick={() => handleImageClick('Toronto')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
-                          <img className= 'h-80 w-full object-cover brightness-50 shadow-md rounded-sm ' src='https://images.unsplash.com/photo-1501130847258-0d557e9c93d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1307&q=80'/>
-                          <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>TORONTO</figcaption>
-                        </figure>
-                   
-                    </div>
-                    <div className='bg-black relative drop-shadow-lg '>
-                   
-                      <figure onClick={() => handleImageClick('New York')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
-                          <img className= 'h-80 w-full object-cover brightness-50' src='https://images.unsplash.com/photo-1587161584760-f51779fb276a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'/>
-                          <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>NEW YORK</figcaption>
-                        </figure>
-                    
-                    </div>
-                    <div className='bg-black relative drop-shadow-lg'>
-                    
-                      <figure onClick={() => handleImageClick('Tokyo')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
-                          <img className= 'h-80 w-full object-cover brightness-50' src='https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'/>
-                          <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>TOKYO</figcaption>
-                        </figure>
+                <div class="grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-3 my-16">
+                  <div className='bg-black relative drop-shadow-lg'>
+                
+                      <figure onClick={() => handleImageClick('Toronto')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
+                        <img className= 'h-80 w-full object-cover brightness-50 shadow-md rounded-sm ' src='https://images.unsplash.com/photo-1501130847258-0d557e9c93d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1307&q=80'/>
+                        <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>TORONTO</figcaption>
+                      </figure>
                   
-                    </div>
-                    <div className='bg-black relative drop-shadow-lg'>
-                 
-                      <figure onClick={() => handleImageClick('London')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
-                          <img className= 'h-80 w-full brightness-75  object-cover' src='https://images.unsplash.com/photo-1534800891164-a1d96b5114e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=759&q=80'/>
-                          <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>LONDON</figcaption>
-                        </figure>
-                      
-                    </div>
                   </div>
+                  <div className='bg-black relative drop-shadow-lg '>
+                  
+                    <figure onClick={() => handleImageClick('New York')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
+                        <img className= 'h-80 w-full object-cover brightness-50' src='https://images.unsplash.com/photo-1587161584760-f51779fb276a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'/>
+                        <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>NEW YORK</figcaption>
+                      </figure>
+                  
+                  </div>
+                  <div className='bg-black relative drop-shadow-lg'>
+                  
+                    <figure onClick={() => handleImageClick('Tokyo')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
+                        <img className= 'h-80 w-full object-cover brightness-50' src='https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'/>
+                        <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>TOKYO</figcaption>
+                      </figure>
+                
+                  </div>
+                  <div className='bg-black relative drop-shadow-lg'>
+                
+                    <figure onClick={() => handleImageClick('London')} className='transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0'>
+                        <img className= 'h-80 w-full brightness-75  object-cover' src='https://images.unsplash.com/photo-1534800891164-a1d96b5114e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=759&q=80'/>
+                        <figcaption className='absolute top-1/2 left-1/2 text-white font-normal tracking-tighter text-lg font-sans '>LONDON</figcaption>
+                      </figure>
+                    
+                  </div>
+                </div>
                   
                 
         </div>
